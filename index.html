@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>NOVA AIM | Precision Trainer by BTATA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header / Nav -->
+    <header class="header">
+      <div class="logo">
+        NOVA AIM
+        <span>precision lab</span>
+      </div>
+      <div class="creator-badge">
+        CREATOR: <strong>BTATA</strong> ⚡
+      </div>
+    </header>
+
+    <!-- Main Game Area -->
+    <main class="main-container">
+      <!-- Canvas Arena -->
+      <div class="game-arena">
+        <canvas id="gameCanvas" width="900" height="600"></canvas>
+      </div>
+
+      <!-- Right Panel: Stats, Modes, Settings -->
+      <div class="right-panel">
+        <!-- Stats Section -->
+        <div class="card stats-card">
+          <div class="card-title">📊 SESSION STATS</div>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value" id="sessionScore">0</span>
+              <span class="stat-label">SCORE</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="accuracy">0</span>
+              <span class="stat-label">ACCURACY</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="hitCount">0</span>
+              <span class="stat-label">HITS</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="shotCount">0</span>
+              <span class="stat-label">SHOTS</span>
+            </div>
+          </div>
+          <div class="highscore-row">
+            🏆 HIGHSCORE: <
