@@ -1,53 +1,107 @@
+<!-- 
+  FILE 1: index.html
+  Main entry point - structure of the application
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="author" content="BTATA">
   <title>NOVA AIM | Precision Trainer by BTATA</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="app">
-    <!-- Header / Nav -->
-    <header class="header">
+  <div class="app">
+    <!-- Header with Creator Credit -->
+    <header class="app-header">
       <div class="logo">
+        <span class="logo-icon">🎯</span>
         NOVA AIM
-        <span>precision lab</span>
+        <span class="logo-sub">precision training</span>
       </div>
-      <div class="creator-badge">
-        CREATOR: <strong>BTATA</strong> ⚡
+      <div class="creator-credit">
+        CREATED BY <strong>BTATA</strong>
       </div>
     </header>
 
-    <!-- Main Game Area -->
-    <main class="main-container">
-      <!-- Canvas Arena -->
-      <div class="game-arena">
-        <canvas id="gameCanvas" width="900" height="600"></canvas>
+    <!-- Main Game Container -->
+    <main class="game-container">
+      <!-- Canvas Area -->
+      <div class="canvas-wrapper">
+        <canvas id="aimCanvas" width="1000" height="600"></canvas>
+        <div class="crosshair-overlay" id="crosshairOverlay"></div>
       </div>
 
-      <!-- Right Panel: Stats, Modes, Settings -->
-      <div class="right-panel">
-        <!-- Stats Section -->
+      <!-- Right Sidebar: Stats + Controls -->
+      <div class="sidebar">
+        <!-- Live Stats -->
         <div class="card stats-card">
-          <div class="card-title">📊 SESSION STATS</div>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <span class="stat-value" id="sessionScore">0</span>
+          <h3 class="card-title">📈 SESSION STATS</h3>
+          <div class="stats-row">
+            <div class="stat">
+              <span class="stat-value" id="scoreDisplay">0</span>
               <span class="stat-label">SCORE</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-value" id="accuracy">0</span>
+            <div class="stat">
+              <span class="stat-value" id="accuracyDisplay">0</span>
               <span class="stat-label">ACCURACY</span>
+              <span class="stat-unit">%</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-value" id="hitCount">0</span>
+            <div class="stat">
+              <span class="stat-value" id="hitsDisplay">0</span>
               <span class="stat-label">HITS</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-value" id="shotCount">0</span>
+            <div class="stat">
+              <span class="stat-value" id="shotsDisplay">0</span>
               <span class="stat-label">SHOTS</span>
             </div>
           </div>
-          <div class="highscore-row">
-            🏆 HIGHSCORE: <
+          <div class="highscore-container">
+            <span class="highscore-label">🏆 ALL-TIME HIGH</span>
+            <span class="highscore-value" id="highscoreDisplay">0</span>
+          </div>
+          <div class="feedback-message" id="feedbackMsg"></div>
+        </div>
+
+        <!-- Mode Selection -->
+        <div class="card mode-card">
+          <h3 class="card-title">⚡ TRAINING MODES</h3>
+          <div class="mode-buttons">
+            <button data-mode="tracking" class="mode-btn active" id="modeTracking">TRACKING</button>
+            <button data-mode="flick" class="mode-btn" id="modeFlick">FLICK</button>
+            <button data-mode="reaction" class="mode-btn" id="modeReaction">REACTION</button>
+          </div>
+          <div class="mode-description" id="modeDesc">
+            Follow the moving target — consistent tracking builds muscle memory.
+          </div>
+          <button class="btn-reset-session" id="resetSessionBtn">⟳ NEW ROUND</button>
+        </div>
+
+        <!-- Settings -->
+        <div class="card settings-card">
+          <h3 class="card-title">⚙️ CUSTOMIZE</h3>
+          <div class="setting-group">
+            <label>🖱️ SENSITIVITY</label>
+            <div class="slider-container">
+              <input type="range" id="sensitivitySlider" min="0.4" max="2.2" step="0.01" value="1.0">
+              <span id="sensitivityVal">1.00</span>
+            </div>
+          </div>
+          <div class="setting-group">
+            <label>🎯 CROSSHAIR</label>
+            <div class="crosshair-options">
+              <button data-cross="dot" class="cross-btn active">● DOT</button>
+              <button data-cross="cross" class="cross-btn">✛ CROSS</button>
+              <button data-cross="circle" class="cross-btn">○ CIRCLE</button>
+            </div>
+          </div>
+          <button class="btn-reset-all" id="resetAllBtn">🗑️ RESET ALL PROGRESS</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
